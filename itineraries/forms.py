@@ -9,10 +9,19 @@ class ItineraryForm(forms.ModelForm):
         model = Itinerary
         fields = ["destination", "start", "end"]
         
-        widgets = {
-            'start': forms.DateInput(),
-            'end': forms.DateInput(),
-        }
+    destination = forms.CharField(widget=forms.TextInput(attrs={
+            'class' : 'form-control',
+            'data-target' : '#'
+        }))
+    start = forms.DateField(widget=forms.DateInput(attrs={
+            'class': 'form-control datepicker-input',
+            'data-target': '#datepicker1'
+        }))
+    
+    end = forms.DateField(widget=forms.DateInput(attrs={
+            'class': 'form-control datepicker-input',
+            'data-target': '#datepicker1'
+        }))
 
 class FindPlaces(forms.Form):
     types = ((1, "restaurants"), (2, "attractions"), (3, "parks"), 
